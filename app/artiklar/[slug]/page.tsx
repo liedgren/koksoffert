@@ -81,9 +81,19 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 export async function generateStaticParams() {
   try {
     const slugs = await getStorySlugs("article");
-    return slugs.map((slug: string) => ({
-      slug,
-    }));
+    console.log("Generating static params for slugs:", slugs);
+
+    // Extract the actual slug from the full_slug if needed
+    return slugs.map((slug: string) => {
+      // If slug contains 'artiklar/', extract just the article part
+      const cleanSlug = slug.includes("artiklar/")
+        ? slug.replace("artiklar/", "")
+        : slug;
+
+      return {
+        slug: cleanSlug,
+      };
+    });
   } catch (error) {
     console.error("Failed to fetch article slugs:", error);
     return [];

@@ -35,13 +35,7 @@ export async function POST(request: NextRequest) {
         blobUrl: blob.url,
         message: 'File uploaded successfully' 
       })
-    } else {
-      // TODO: Implement alternative storage or discard file
-      console.log('BLOB_READ_WRITE_TOKEN not configured, discarding file')
-      return NextResponse.json({ 
-        message: 'File received but not stored (BLOB_READ_WRITE_TOKEN not configured)' 
-      })
-    }
+    } 
   } catch (error) {
     console.error('Upload error:', error)
     return NextResponse.json(
