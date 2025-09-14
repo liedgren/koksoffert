@@ -60,14 +60,9 @@ export async function POST(request: NextRequest) {
         message: 'File uploaded successfully' 
       })
     } else {
-      // For local development, simulate a successful upload
-      // In production, this should be configured with BLOB_READ_WRITE_TOKEN
-      const mockBlobUrl = `https://mock-blob-url.com/uploads/${sanitizedFileName}`
-      
       return NextResponse.json({ 
-        blobUrl: mockBlobUrl,
-        message: 'File uploaded successfully (local development mode)' 
-      })
+        error: 'Blob storage not configured' 
+      }, { status: 500 })
     }
   } catch (error) {
     console.error('Upload error:', error)
