@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import ContentSection from "@/components/ContentSection";
 import ArticlesList from "@/components/ArticlesList";
 import { useArticles } from "@/lib/hooks/useArticles";
+import styles from "@/styles/page-layout.module.css";
 
 export const metadata: Metadata = {
   title: "Kitchen Artiklar - Professional Kitchen Resources | Koksoffert",
@@ -70,6 +71,8 @@ export default async function ArticlesPage() {
           backgroundImage="/images/backgrounds/hero4.jpg"
           height="minimal"
         />
+
+        <h2 className={styles.sectionTitle}>Köksnyheter</h2>
 
         <ContentSection>
           <ArticlesList

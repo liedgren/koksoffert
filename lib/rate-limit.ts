@@ -17,11 +17,13 @@ export function rateLimit(
   const key = identifier
   
   // Clean up expired entries
-  for (const [k, v] of rateLimitStore.entries()) {
+  const keysToDelete: string[] = []
+  rateLimitStore.forEach((v, k) => {
     if (now > v.resetTime) {
-      rateLimitStore.delete(k)
+      keysToDelete.push(k)
     }
-  }
+  })
+  keysToDelete.forEach(k => rateLimitStore.delete(k))
   
   const entry = rateLimitStore.get(key)
   

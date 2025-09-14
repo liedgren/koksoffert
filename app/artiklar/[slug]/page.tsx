@@ -20,6 +20,9 @@ function getImageUrl(image: any): string {
   if (image?.filename) {
     return image.filename;
   }
+  if (image?.field?.filename) {
+    return image.field.filename;
+  }
   return "";
 }
 
@@ -46,11 +49,20 @@ export async function generateMetadata({
 
   const baseUrl = "https://koksoffert.com";
   const articleUrl = `${baseUrl}/artiklar/${params.slug}`;
-  const imageUrl = getImageUrl(article.content.image)
-    ? `https://img2.storyblok.com/1200x630/${getImageUrl(
-        article.content.image
-      )}`
-    : `${baseUrl}/og-image.jpg`;
+
+  // Handle Storyblok image URL construction
+  let imageUrl = `${baseUrl}/og-image.jpg`; // Default fallback
+  const imagePath = getImageUrl(article.content.image);
+
+  if (imagePath) {
+    // If it's already a full URL, use it directly
+    if (imagePath.startsWith("http")) {
+      imageUrl = imagePath;
+    } else {
+      // Construct Storyblok image URL
+      imageUrl = `https://img2.storyblok.com/1200x630/${imagePath}`;
+    }
+  }
 
   return {
     title: `${article.content.title} - Koksoffert`,
@@ -109,11 +121,20 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   const baseUrl = "https://koksoffert.com";
   const articleUrl = `${baseUrl}/artiklar/${params.slug}`;
-  const imageUrl = getImageUrl(article.content.image)
-    ? `https://img2.storyblok.com/1200x630/${getImageUrl(
-        article.content.image
-      )}`
-    : `${baseUrl}/og-image.jpg`;
+
+  // Handle Storyblok image URL construction
+  let imageUrl = `${baseUrl}/og-image.jpg`; // Default fallback
+  const imagePath = getImageUrl(article.content.image);
+
+  if (imagePath) {
+    // If it's already a full URL, use it directly
+    if (imagePath.startsWith("http")) {
+      imageUrl = imagePath;
+    } else {
+      // Construct Storyblok image URL
+      imageUrl = `https://img2.storyblok.com/1200x630/${imagePath}`;
+    }
+  }
 
   // Structured data for SEO
   const structuredData = {
@@ -158,10 +179,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         {/* Hero Section with Article Image */}
         <div className={styles.articleHero}>
           <img
-            src={
-              getImageUrl(article.content.image) ||
-              "/images/articles/article-placeholder.jpg"
-            }
+            src={imagePath || "/images/articles/article-placeholder.jpg"}
             alt={article.content.title}
             className={styles.heroImage}
           />

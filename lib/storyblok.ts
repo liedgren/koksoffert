@@ -15,7 +15,7 @@ function getStoryblokClient(): StoryblokClient {
     storyblokClientInstance = new StoryblokClient({
       accessToken,
       cache: {
-        clear: 'auto',
+        clear: 'manual',
         type: 'memory'
       }
     })
@@ -55,39 +55,29 @@ export async function getStories(storyType: string = 'article') {
 // Helper function to get a single story by slug
 export async function getStoryBySlug(slug: string, storyType: string = 'article') {
   try {
+    console.log(`Fetching story with slug: ${slug}, type: ${storyType}`)
     
-    // Try different slug formats based on story type
-    let storyData = null
-    const slugVariations = [
-      slug, // Direct slug
-      `${storyType}/${slug}`, // With story type prefix
-      `${storyType}s/${slug}`, // With pluralized story type prefix
-    ]
+    // Determine the correct slug format based on story type
+    let fullSlug = slug
     
-    // Add specific variations for articles
     if (storyType === 'article') {
-      slugVariations.push(`artiklar/${slug}`)
+      fullSlug = `artiklar/${slug}`
+    } else if (storyType === 'reference') {
+      fullSlug = `references/${slug}`
     }
     
-    // Add specific variations for references
-    if (storyType === 'reference') {
-      slugVariations.push(`references/${slug}`)
+    console.log(`Using full slug: ${fullSlug}`)
+    
+    const { data } = await storyblokClient.get(`cdn/stories/${fullSlug}`)
+    
+    if (data.story) {
+      console.log(`Successfully fetched story: ${data.story.name}`)
+      return data.story
     }
     
-    // Try each slug variation
-    for (const slugVariation of slugVariations) {
-      try {
-        const { data } = await storyblokClient.get(`cdn/stories/${slugVariation}`)
-        storyData = data.story
-        break // Success, exit the loop
-      } catch (error) {
-        // Continue to next variation
-        continue
-      }
-    }
-    
-    return storyData || null
+    return null
   } catch (error) {
+    console.error(`Failed to fetch story with slug ${slug}:`, error)
     return null
   }
 }
