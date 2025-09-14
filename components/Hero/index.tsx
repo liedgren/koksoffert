@@ -79,13 +79,37 @@ export default function Hero({
     setIsSubmitting(true);
 
     try {
+      let blobUrl = "";
+
+      // First upload the file if one exists
+      if (uploadedFile) {
+        const uploadFormData = new FormData();
+        uploadFormData.append("file", uploadedFile);
+
+        const uploadResponse = await fetch("/api/upload", {
+          method: "POST",
+          body: uploadFormData,
+        });
+
+        if (uploadResponse.ok) {
+          const uploadResult = await uploadResponse.json();
+          blobUrl = uploadResult.blobUrl;
+          console.log("File uploaded successfully:", blobUrl);
+        } else {
+          const uploadError = await uploadResponse.json();
+          console.error("Upload failed:", uploadError);
+          throw new Error("File upload failed");
+        }
+      }
+
+      // Then submit the form data with the blob URL
       const submitData = new FormData();
       submitData.append("name", formData.name);
       submitData.append("phone", formData.phone);
       submitData.append("email", formData.email);
 
-      if (uploadedFile) {
-        submitData.append("file", uploadedFile);
+      if (blobUrl) {
+        submitData.append("blobUrl", blobUrl);
       }
 
       const response = await fetch("/api/submit", {
@@ -103,6 +127,8 @@ export default function Hero({
         });
         setUploadedFile(null);
       } else {
+        const errorData = await response.json();
+        console.error("Submit failed:", errorData);
         throw new Error("Submission failed");
       }
     } catch (error) {

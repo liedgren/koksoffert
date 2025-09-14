@@ -36,11 +36,59 @@
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+  border: none;
 }
 
 .articleCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.articleCard:visited {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.articleCard:focus {
+  outline: none;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.articleCard:active {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.articleCard:link {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* Remove all link styling from elements inside article cards */
+.articleCard * {
+  text-decoration: none !important;
+}
+
+.articleCard *:hover {
+  text-decoration: none !important;
+}
+
+.articleCard *:visited {
+  text-decoration: none !important;
+}
+
+.articleCard *:focus {
+  text-decoration: none !important;
+}
+
+.articleCard *:active {
+  text-decoration: none !important;
 }
 
 .articleImage {
@@ -101,15 +149,7 @@
   color: #1f2937;
 }
 
-.articleTitle a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.articleTitle a:hover {
-  color: #374151;
-}
+/* Removed link styling from title since the whole card is wrapped in a link */
 
 .articleExcerpt {
   color: #6b7280;
@@ -137,11 +177,6 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
-  transition: color 0.2s ease;
-}
-
-.articleLink:hover {
-  color: #374151;
 }
 
 .noArticles {

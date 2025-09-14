@@ -183,37 +183,31 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             alt={article.content.title}
             className={styles.heroImage}
           />
-          <div className={styles.heroOverlay}>
-            <div className={styles.heroContent}>
-              <div className={styles.articleMeta}>
-                <span
-                  className={styles.articleCategory}
-                  itemProp="articleSection"
-                >
-                  {article.content.category}
-                </span>
-                <time
-                  className={styles.articleDate}
-                  dateTime={article.published_at}
-                  itemProp="datePublished"
-                >
-                  {new Date(article.published_at).toLocaleDateString()}
-                </time>
-                <span
-                  className={styles.articleReadTime}
-                  itemProp="timeRequired"
-                >
-                  {article.content.readTime}
-                </span>
-              </div>
-              <h1 className={styles.articleTitle} itemProp="headline">
-                {article.content.title}
-              </h1>
-              <p className={styles.articleExcerpt} itemProp="description">
-                {article.content.excerpt}
-              </p>
-            </div>
+        </div>
+
+        {/* Article Header Below Hero */}
+        <div className={styles.articleHeader}>
+          <div className={styles.articleMeta}>
+            <span className={styles.articleCategory} itemProp="articleSection">
+              {article.content.category}
+            </span>
+            <time
+              className={styles.articleDate}
+              dateTime={article.published_at}
+              itemProp="datePublished"
+            >
+              {new Date(article.published_at).toLocaleDateString()}
+            </time>
+            <span className={styles.articleReadTime} itemProp="timeRequired">
+              {article.content.readTime}
+            </span>
           </div>
+          <h1 className={styles.articleTitle} itemProp="headline">
+            {article.content.title}
+          </h1>
+          <p className={styles.articleExcerpt} itemProp="description">
+            {article.content.excerpt}
+          </p>
         </div>
 
         {/* Article Content */}

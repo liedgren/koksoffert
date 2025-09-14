@@ -59,7 +59,11 @@ export async function POST(request: NextRequest) {
         blobUrl: blob.url,
         message: 'File uploaded successfully' 
       })
-    } 
+    } else {
+      return NextResponse.json({ 
+        error: 'Blob storage not configured' 
+      }, { status: 500 })
+    }
   } catch (error) {
     console.error('Upload error:', error)
     // Don't expose internal error details to client
