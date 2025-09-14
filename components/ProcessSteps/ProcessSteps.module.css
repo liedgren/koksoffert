@@ -1,0 +1,116 @@
+/* How It Works Section */
+.howItWorks {
+  padding: 20px 0 40px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+
+.steps {
+  gap: 32px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.stepNumber {
+  width: 48px;
+  height: 48px;
+  background: #000;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--font-barlow), sans-serif;
+  flex-shrink: 0;
+}
+
+.stepContent {
+  flex: 1;
+}
+
+.stepTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  font-family: var(--font-barlow), sans-serif;
+}
+
+.stepDescription {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .howItWorks {
+    padding: 48px 0;
+  }
+  
+  .container {
+    padding: 0 24px;
+  }
+  
+  
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .step {
+    padding: 20px;
+  }
+  
+  .stepNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .stepTitle {
+    font-size: 18px;
+  }
+  
+  .stepDescription {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .howItWorks {
+    padding: 32px 0;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  
+  .step {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .stepNumber {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+}

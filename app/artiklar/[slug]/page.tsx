@@ -4,11 +4,23 @@ import Link from "next/link";
 import { render } from "storyblok-rich-text-react-renderer";
 import { getStoryBySlug, getStorySlugs } from "@/lib/storyblok";
 import { StoryblokStory } from "@/lib/types";
+import styles from "./article.module.css";
 
 interface ArticlePageProps {
   params: {
     slug: string;
   };
+}
+
+// Helper function to extract image URL from Storyblok image field
+function getImageUrl(image: any): string {
+  if (typeof image === "string") {
+    return image;
+  }
+  if (image?.filename) {
+    return image.filename;
+  }
+  return "";
 }
 
 async function getArticle(slug: string): Promise<StoryblokStory | null> {
@@ -32,10 +44,56 @@ export async function generateMetadata({
     };
   }
 
+  const baseUrl = "https://koksoffert.com";
+  const articleUrl = `${baseUrl}/artiklar/${params.slug}`;
+  const imageUrl = getImageUrl(article.content.image)
+    ? `https://img2.storyblok.com/1200x630/${getImageUrl(
+        article.content.image
+      )}`
+    : `${baseUrl}/og-image.jpg`;
+
   return {
     title: `${article.content.title} - Koksoffert`,
     description: article.content.excerpt,
     keywords: `kitchen, ${article.content.category.toLowerCase()}, professional kitchen, ${article.content.title.toLowerCase()}`,
+    authors: [{ name: "Koksoffert Team" }],
+    openGraph: {
+      title: `${article.content.title} - Koksoffert`,
+      description: article.content.excerpt,
+      url: articleUrl,
+      siteName: "Koksoffert",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: article.content.title,
+        },
+      ],
+      locale: "en_US",
+      type: "article",
+      authors: ["Koksoffert Team"],
+      section: article.content.category,
+      tags: [article.content.category, "kitchen", "professional"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${article.content.title} - Koksoffert`,
+      description: article.content.excerpt,
+      images: [imageUrl],
+      creator: "@koksoffert",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
   };
 }
 
@@ -46,34 +104,114 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound();
   }
 
+  // Debug image data
+  console.log("Article image data:", article.content.image);
+
+  const baseUrl = "https://koksoffert.com";
+  const articleUrl = `${baseUrl}/artiklar/${params.slug}`;
+  const imageUrl = getImageUrl(article.content.image)
+    ? `https://img2.storyblok.com/1200x630/${getImageUrl(
+        article.content.image
+      )}`
+    : `${baseUrl}/og-image.jpg`;
+
+  // Structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.content.title,
+    description: article.content.excerpt,
+    image: imageUrl,
+    author: {
+      "@type": "Organization",
+      name: "Koksoffert Team",
+      url: baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Koksoffert",
+      url: baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/logo.png`,
+      },
+    },
+    datePublished: article.published_at,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": articleUrl,
+    },
+    articleSection: article.content.category,
+    keywords: [article.content.category, "kitchen", "professional", "catering"],
+    wordCount: article.content.content?.length || 0,
+    timeRequired: article.content.readTime,
+    url: articleUrl,
+  };
+
   return (
-    <main>
-      <div className="container">
-        <nav className="breadcrumb">
-          <Link href="/artiklar">← Back to Artiklar</Link>
-        </nav>
-
-        <article className="article-content">
-          <header className="article-header">
-            <div className="article-meta">
-              <span className="article-category">
-                {article.content.category}
-              </span>
-              <span className="article-date">
-                {new Date(article.published_at).toLocaleDateString()}
-              </span>
-              <span className="article-read-time">
-                {article.content.readTime}
-              </span>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <main>
+        {/* Hero Section with Article Image */}
+        <div className={styles.articleHero}>
+          <img
+            src={
+              getImageUrl(article.content.image) ||
+              "/images/articles/article-placeholder.jpg"
+            }
+            alt={article.content.title}
+            className={styles.heroImage}
+          />
+          <div className={styles.heroOverlay}>
+            <div className={styles.heroContent}>
+              <div className={styles.articleMeta}>
+                <span
+                  className={styles.articleCategory}
+                  itemProp="articleSection"
+                >
+                  {article.content.category}
+                </span>
+                <time
+                  className={styles.articleDate}
+                  dateTime={article.published_at}
+                  itemProp="datePublished"
+                >
+                  {new Date(article.published_at).toLocaleDateString()}
+                </time>
+                <span
+                  className={styles.articleReadTime}
+                  itemProp="timeRequired"
+                >
+                  {article.content.readTime}
+                </span>
+              </div>
+              <h1 className={styles.articleTitle} itemProp="headline">
+                {article.content.title}
+              </h1>
+              <p className={styles.articleExcerpt} itemProp="description">
+                {article.content.excerpt}
+              </p>
             </div>
-            <h1 className="article-title">{article.content.title}</h1>
-            <p className="article-excerpt">{article.content.excerpt}</p>
-          </header>
+          </div>
+        </div>
 
-          <div className="article-body">{render(article.content.content)}</div>
-        </article>
-      </div>
-    </main>
+        {/* Article Content */}
+        <div className={styles.articleContainer}>
+          <article
+            className={styles.articleContent}
+            itemScope
+            itemType="https://schema.org/Article"
+          >
+            <div className={styles.articleBody} itemProp="articleBody">
+              {render(article.content.content)}
+            </div>
+          </article>
+        </div>
+      </main>
+    </>
   );
 }
 

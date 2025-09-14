@@ -1,0 +1,129 @@
+/* Terms Page Styles */
+.container {
+  margin-top: 80px;
+  padding: 32px 32px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  background: white;
+  border-radius: 8px;
+  margin-left: 20px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #6b7280;
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+.content h2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 32px 0 16px 0;
+  line-height: 1.3;
+}
+
+.content h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #374151;
+  margin: 24px 0 12px 0;
+  line-height: 1.4;
+}
+
+.content p {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+.content ul {
+  margin: 0 0 16px 0;
+  padding-left: 24px;
+}
+
+.content li {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+.lastUpdated {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    margin: 10px;
+    padding: 16px;
+  }
+  
+  .content {
+    padding: 24px;
+    margin-top: 80px;
+  }
+  
+  .title {
+    font-size: 32px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+  }
+  
+  .content h2 {
+    font-size: 24px;
+  }
+  
+  .content h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 5px;
+    padding: 8px;
+  }
+  
+  .content {
+    padding: 16px;
+    margin-left: 0;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+  }
+  
+  .content h2 {
+    font-size: 20px;
+  }
+  
+  .content h3 {
+    font-size: 18px;
+  }
+}

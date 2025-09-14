@@ -1,0 +1,112 @@
+/* Om Oss Page Styles */
+.contentText {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #000;
+  margin-bottom: 48px;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.valuesContainer {
+  gap: 32px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.valueItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.valueIcon {
+  width: 48px;
+  height: 48px;
+  background: #000;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--font-barlow), sans-serif;
+  flex-shrink: 0;
+}
+
+.valueContent {
+  flex: 1;
+}
+
+.valueTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  font-family: var(--font-barlow), sans-serif;
+  margin: 0 0 8px 0;
+}
+
+.valueDescription {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contentText {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+  
+  .valueItem {
+    padding: 20px;
+  }
+  
+  .valueIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .valueTitle {
+    font-size: 18px;
+  }
+  
+  .valueDescription {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentText {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  
+  .valueItem {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .valueIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .valueTitle {
+    font-size: 16px;
+  }
+  
+  .valueDescription {
+    font-size: 13px;
+  }
+}

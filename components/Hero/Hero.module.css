@@ -1,0 +1,387 @@
+/* Hero Component Styles */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  background: rgba(0,0,0,0.3) url('/images/backgrounds/hero.jpg');
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  color: white;
+  border-radius: 0 0 50px 50px;
+  padding: 20vh 0 80px 0;
+  transition: min-height 0.5s ease-out;
+}
+
+.heroSection.expanded {
+  min-height: 120vh;
+}
+
+.heroContent {
+  max-width: 100%;
+  padding: 0 32px;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 100px;
+}
+
+.title {
+  color: #fff;
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 600;
+  font-size: 64px;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.subtitle {
+  font-size: 19px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+  color: #fff;
+}
+
+/* Form Container */
+.formContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Expanding Form */
+.expandingForm {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  animation: formSlideIn 0.4s ease-out;
+  transform-origin: top center;
+  overflow: hidden;
+}
+
+@keyframes formSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 1000px;
+  }
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: formElementSlideIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.formGroup:nth-child(1) { animation-delay: 0.1s; }
+.formGroup:nth-child(2) { animation-delay: 0.2s; }
+.formGroup:nth-child(3) { animation-delay: 0.3s; }
+.formGroup:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes formElementSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.input {
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+/* File Upload Styles */
+.fileUploadContainer {
+  position: relative;
+}
+
+.fileInput {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.fileUploadLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #f9fafb;
+}
+
+.fileUploadLabel:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.fileUploadIcon {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.fileUploadText {
+  color: #6b7280;
+  font-size: 14px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.submitButton {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  animation: formElementSlideIn 0.4s ease-out;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
+}
+
+.submitButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroSection {
+    border-radius: 0 0 20px 20px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 15vh 0 48px 0;
+  }
+
+  .heroSection.expanded {
+    min-height: 130vh;
+  }
+
+  .heroContent {
+    padding: 0 20px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 19px;
+  }
+
+  .contactForm {
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .submitButton {
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 12vh 0 32px 0;
+  }
+
+  .heroSection.expanded {
+    min-height: 140vh;
+  }
+
+  .heroContent {
+    padding: 0 20px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .contactForm {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .submitButton {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Success Message Styles */
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 32px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: successFadeIn 0.6s ease-out;
+}
+
+.successIcon {
+  color: #10b981;
+  margin-bottom: 24px;
+  animation: successIconBounce 0.8s ease-out;
+}
+
+.successTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.successText {
+  font-size: 18px;
+  color: #4b5563;
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+
+@keyframes successFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes successIconBounce {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive Success Message */
+@media (max-width: 768px) {
+  .successMessage {
+    padding: 32px 24px;
+    border-radius: 15px;
+  }
+
+  .successTitle {
+    font-size: 24px;
+  }
+
+  .successText {
+    font-size: 16px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .successMessage {
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+
+  .successTitle {
+    font-size: 20px;
+  }
+
+  .successText {
+    font-size: 14px;
+  }
+
+}

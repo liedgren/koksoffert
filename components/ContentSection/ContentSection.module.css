@@ -1,0 +1,242 @@
+/* ContentSection Component Styles */
+.contentSection {
+  padding: 64px 0;
+}
+
+.white {
+  background: #ffffff;
+}
+
+.light {
+  background: #f8f9fa;
+}
+
+.dark {
+  background: #2c3e50;
+  color: white;
+}
+
+.dark h2,
+.dark h3 {
+  color: white;
+}
+
+.dark p {
+  color: #e5e7eb;
+}
+
+/* Section Styles */
+.section {
+  margin-bottom: 64px;
+}
+
+.sectionTitle {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 48px;
+  color: #2c3e50;
+}
+
+/* Process Steps */
+.processSteps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+  margin-top: 48px;
+}
+
+.processStep {
+  background: #f8f9fa;
+  padding: 48px 32px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.processStep:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: #2563eb;
+}
+
+.stepNumber {
+  background: #2563eb;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0 auto 24px;
+}
+
+.stepTitle {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+.stepDescription {
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Benefits Grid */
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+  margin-top: 3rem;
+}
+
+.benefitItem {
+  background: #f8f9fa;
+  padding: 32px 24px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.benefitItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-color: #2563eb;
+}
+
+.benefitTitle {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #2563eb;
+}
+
+.benefitDescription {
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.ctaSection {
+  text-align: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 64px 32px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  margin-top: 64px;
+}
+
+.ctaTitle {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  margin-bottom: 24px;
+  color: #2c3e50;
+}
+
+.ctaDescription {
+  margin-bottom: 48px;
+  color: #666;
+  font-size: 19px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* About Section Styles */
+.aboutSection {
+  margin-bottom: 64px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #e5e7eb;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aboutSection:last-child {
+  border-bottom: none;
+}
+
+.aboutSection ul {
+  margin-left: 24px;
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+
+.aboutSection li {
+  margin-bottom: 12px;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contentSection {
+    padding: 48px 0;
+  }
+
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .processSteps {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .processStep {
+    padding: 32px 24px;
+  }
+
+  .ctaSection {
+    padding: 48px 24px;
+  }
+
+  .ctaTitle {
+    font-size: 32px;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentSection {
+    padding: 32px 0;
+  }
+
+  .processStep {
+    padding: 24px 16px;
+  }
+
+  .ctaSection {
+    padding: 32px 16px;
+  }
+}

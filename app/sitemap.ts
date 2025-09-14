@@ -12,31 +12,51 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Failed to fetch article slugs for sitemap:', error)
   }
 
-  const articleUrls = articleSlugs.map(slug => ({
-    url: `${baseUrl}/artiklar/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  // Clean slugs and create article URLs with proper priorities
+  const articleUrls = articleSlugs.map(slug => {
+    // Clean the slug if it contains 'artiklar/'
+    const cleanSlug = slug.includes("artiklar/") 
+      ? slug.replace("artiklar/", "") 
+      : slug;
+    
+    return {
+      url: `${baseUrl}/artiklar/${cleanSlug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    };
+  })
   
   return [
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
+      changeFrequency: 'weekly',
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/offer`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/artiklar`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/om-oss`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/sa-fungerar-det`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/success`,

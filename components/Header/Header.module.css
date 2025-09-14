@@ -1,0 +1,124 @@
+/* Header Component Styles */
+.header {
+  background: #fff;
+  position: absolute;
+  min-width: calc(100% - 40px);
+  z-index: 50;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  flex-shrink: 0;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Navigation */
+.navigation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 32px;
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navLink {
+  color: #000;
+  text-decoration: none;
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.navLinkActive::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+/* CTA Button */
+.cta {
+  flex-shrink: 0;
+}
+
+.ctaButton {
+  border: 1px solid #000;
+  color: #000;
+  background: transparent;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.ctaButton:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 12px;
+    height: 56px;
+  }
+
+  .navList {
+    gap: 16px;
+  }
+
+  .navLink {
+    font-size: 13px;
+  }
+
+  .ctaButton {
+    padding: 6px 13px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navigation {
+    display: none;
+  }
+
+  .container {
+    justify-content: space-between;
+  }
+}

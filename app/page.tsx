@@ -1,50 +1,36 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import ArticlesList from "@/components/ArticlesList";
-import { useArticles } from "@/lib/hooks/useArticles";
+import Hero from "@/components/Hero";
+import Brands from "@/components/Brands";
+import ProcessSteps from "@/components/ProcessSteps";
+import ProjectShowcase from "@/components/ProjectShowcase";
+import PartnershipInfo from "@/components/PartnershipInfo";
+import Container from "@/components/Container";
+import styles from "@/styles/page-layout.module.css";
 
 export const metadata: Metadata = {
-  title: "Koksoffert - Professional Kitchen Offers",
-  description: "Get professional kitchen offers and quotes for your business.",
+  title: "Köksoffert.se - vägen till ett billigare kök.",
+  description: "Vi jämför och sänker priset på ditt kök.",
 };
 
 export default async function HomePage() {
-  const articles = await useArticles();
-
   return (
     <main>
-      <div className="container">
-        <section className="hero-section">
-          <h1>Koksoffert</h1>
-          <p>Professional kitchen offers and quotes for your business.</p>
-          <div className="cta-buttons">
-            <Link href="/offer" className="cta-button">
-              Get Your Offer
-            </Link>
-            <Link href="/artiklar" className="cta-button secondary">
-              Read Artiklar
-            </Link>
-          </div>
-        </section>
+      <Hero
+        title="Ge oss 1 minut - få 10 000-tals kronor tillbaka "
+        subtitle="Ladda upp din befintliga köksoffert och svara på några snabba frågor. Sedan har du ett nytt fantastiskt pris inom 7 dagar.
 
-        {articles.length > 0 && (
-          <section className="featured-articles">
-            <h2>Featured Articles</h2>
-            <ArticlesList
-              articles={articles}
-              showTitle={false}
-              showIntro={false}
-              maxArticles={3}
-              className="featured-articles-list"
-            />
-            <div className="text-center">
-              <Link href="/artiklar" className="cta-button secondary">
-                View All Articles
-              </Link>
-            </div>
-          </section>
-        )}
-      </div>
+."
+      />
+
+      <Brands />
+
+      <h2 className={styles.sectionTitle}>Så fungerar det</h2>
+      <ProcessSteps />
+
+      <h2 className={styles.sectionTitle}>Genomförda renoveringar</h2>
+      <ProjectShowcase />
+
+      <PartnershipInfo />
     </main>
   );
 }

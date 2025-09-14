@@ -1,0 +1,34 @@
+/* Container Component Styles */
+.container {
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.small {
+  max-width: 600px;
+}
+
+.medium {
+  max-width: 900px;
+}
+
+.large {
+  max-width: 1200px;
+}
+
+.full {
+  max-width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+}

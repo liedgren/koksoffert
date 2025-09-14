@@ -99,7 +99,6 @@ The `vercel.json` includes:
 │   ├── robots.ts
 │   └── sitemap.ts
 ├── components/
-│   └── UploadForm.module.scss
 ├── styles/
 │   └── globals.scss
 ├── package.json

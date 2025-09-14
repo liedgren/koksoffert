@@ -16,6 +16,7 @@
     "react-dom": "^18",
     "resend": "^3.2.0",
     "sass": "^1.92.1",
+    "server-only": "^0.0.1",
     "storyblok-js-client": "^7.1.4",
     "storyblok-rich-text-react-renderer": "^3.0.1"
   },

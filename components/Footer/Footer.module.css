@@ -1,0 +1,174 @@
+/* Footer Component Styles */
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem 0 1.5rem 0;
+  margin-top: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+/* Logo Column */
+.logoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  justify-content: center;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1); /* Make logo white */
+}
+
+.tagline {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 200px;
+}
+
+/* Regular Columns */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.columnTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.25rem 0;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.link {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.link:hover {
+  color: #fff;
+}
+
+.hours {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* Bottom Section */
+.bottom {
+  border-top: 1px solid #333;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.copyright {
+  color: #888;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .logoColumn {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .tagline {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0 1rem 0;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .logoColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: auto;
+    margin: 0 auto;
+    gap: 0.5rem;
+  }
+  
+  .columnTitle {
+    font-size: 1rem;
+  }
+  
+  .link {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 0 1rem 0;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .columns {
+    gap: 1.5rem;
+  }
+  
+  .logo {
+    width: 100px;
+  }
+  
+  .tagline {
+    font-size: 0.9rem;
+  }
+}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArticlesListProps } from "./types";
+import styles from "./ArticlesList.module.css";
 
 export default function ArticlesList({
   articles,
@@ -14,46 +15,57 @@ export default function ArticlesList({
     : articles;
 
   return (
-    <div className={`articles-section ${className}`}>
+    <div className={`${styles.articlesSection} ${className}`}>
       {showTitle && (
-        <h1 className="articles-title">Kitchen Artiklar & Resources</h1>
+        <h1 className={styles.articlesTitle}>Kitchen Artiklar & Resources</h1>
       )}
 
       {showIntro && (
-        <p className="articles-intro">
+        <p className={styles.articlesIntro}>
           Expert insights and practical advice for professional kitchen design,
           equipment selection, and industry best practices.
         </p>
       )}
 
       {displayArticles.length === 0 ? (
-        <div className="no-articles">
+        <div className={styles.noArticles}>
           <p>No artiklar available at the moment. Please check back later.</p>
         </div>
       ) : (
-        <div className="articles-grid">
+        <div className={styles.articlesGrid}>
           {displayArticles.map((article) => (
-            <article key={article.id} className="article-card">
-              <div className="article-meta">
-                <span className="article-category">{article.category}</span>
-                <span className="article-date">
-                  {new Date(article.publishedAt).toLocaleDateString()}
-                </span>
-              </div>
-              <h2 className="article-title">
-                <Link href={`/artiklar/${article.slug}`}>{article.title}</Link>
-              </h2>
-              <p className="article-excerpt">{article.excerpt}</p>
-              <div className="article-footer">
-                <span className="article-read-time">{article.readTime}</span>
-                <Link
-                  href={`/artiklar/${article.slug}`}
-                  className="article-link"
-                >
-                  Read More →
-                </Link>
-              </div>
-            </article>
+            <Link href={`/artiklar/${article.slug}`}>
+              <article key={article.id} className={styles.articleCard}>
+                <div className={styles.articleImage}>
+                  <img
+                    src={
+                      article.image ||
+                      "/images/articles/article-placeholder.jpg"
+                    }
+                    alt={article.title}
+                    className={styles.image}
+                  />
+                </div>
+                <div className={styles.articleContent}>
+                  <div className={styles.articleMeta}>
+                    <span className={styles.articleCategory}>
+                      {article.category}
+                    </span>
+                    <span className={styles.articleDate}>
+                      {new Date(article.publishedAt).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <h2 className={styles.articleTitle}>{article.title}</h2>
+                  <p className={styles.articleExcerpt}>{article.excerpt}</p>
+                  <div className={styles.articleFooter}>
+                    <span className={styles.articleReadTime}>
+                      {article.readTime}
+                    </span>
+                    <div className={styles.articleLink}>Läs mer →</div>
+                  </div>
+                </div>
+              </article>
+            </Link>
           ))}
         </div>
       )}

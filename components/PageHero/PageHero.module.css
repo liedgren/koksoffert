@@ -1,0 +1,172 @@
+/* PageHero Component Styles */
+.pageHero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: contain;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  color: white;
+  border-radius: 0 0 50px 50px;
+  overflow: hidden;
+  
+}
+
+.heroContent {
+  position: relative;
+  max-width: 800px;
+}
+
+.title {
+  font-family: var(--font-barlow), sans-serif;
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+/* Titles below hero */
+.titleBelow {
+  padding: 48px 32px 32px;
+  background: white;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.titleBelowText {
+  font-family: var(--font-barlow), sans-serif;
+  color: #1f2937;
+  font-size: 48px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.subtitleBelowText {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #6b7280;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Height variants */
+.minimal {
+  height: 25vh;
+  min-height: 200px;
+}
+
+.short {
+  height: 40vh;
+  min-height: 300px;
+}
+
+.medium {
+  height: 50vh;
+  min-height: 400px;
+}
+
+.tall {
+  height: 60vh;
+  min-height: 500px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pageHero {
+    border-radius: 0 0 15px 15px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .titleBelowText {
+    font-size: 40px;
+  }
+
+  .subtitleBelowText {
+    font-size: 18px;
+  }
+
+  .minimal {
+    height: 20vh;
+    min-height: 150px;
+  }
+
+  .short {
+    height: 35vh;
+    min-height: 250px;
+  }
+
+  .medium {
+    height: 40vh;
+    min-height: 300px;
+  }
+
+  .tall {
+    height: 45vh;
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageHero {
+    border-radius: 0 0 10px 10px;
+  }
+
+  .heroContent {
+    padding: 0 16px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .titleBelow {
+    padding: 32px 16px 24px;
+  }
+
+  .titleBelowText {
+    font-size: 32px;
+  }
+
+  .subtitleBelowText {
+    font-size: 16px;
+  }
+
+  .minimal {
+    height: 15vh;
+    min-height: 120px;
+  }
+
+  .short {
+    height: 30vh;
+    min-height: 200px;
+  }
+
+  .medium {
+    height: 35vh;
+    min-height: 250px;
+  }
+
+  .tall {
+    height: 40vh;
+    min-height: 300px;
+  }
+}

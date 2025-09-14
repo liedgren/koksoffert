@@ -16,6 +16,7 @@ export async function useArticles(): Promise<ArticleListItem[]> {
       category: story.content?.category || "Design",
       readTime: story.content?.readTime || "5 min read",
       publishedAt: story.published_at || story.created_at,
+      image: story.content?.image?.filename || story.content?.image,
     }));
     
     console.log("Transformed articles:", articles);

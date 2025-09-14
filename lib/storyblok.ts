@@ -1,66 +1,53 @@
 import StoryblokClient from 'storyblok-js-client'
 
 // Helper function to get access token
-function getAccessToken(): string | undefined {
-  // Try multiple ways to access the environment variable
-  const token = process.env.STORYBLOK_ACCESS_TOKEN || process.env['STORYBLOK_ACCESS_TOKEN']
-  
-  // TEMPORARY: Hardcode token for testing
-  const hardcodedToken = '9DGra75hYTHrLddwyhVI5wtt'
-  
-  // Debug: Show all environment variables that contain "STORYBLOK"
-  const storyblokVars = Object.keys(process.env).filter(key => 
-    key.toUpperCase().includes('STORYBLOK')
-  )
-  console.log('🔍 All STORYBLOK env vars:', storyblokVars)
-  
-  // Debug: Show the actual value if found
-  if (token) {
-    console.log('🔑 Storyblok token found:', token.substring(0, 8) + '...')
-    return token
-  } else {
-    console.log('❌ Storyblok token not found, using hardcoded token for testing')
-    console.log('🔍 Available env vars:', Object.keys(process.env).slice(0, 10))
-    return hardcodedToken
-  }
+function getAccessToken(): string {
+  return '9DGra75hYTHrLddwyhVI5wtt'
 }
 
-// Create Storyblok client
-export const storyblokClient = new StoryblokClient({
-  accessToken: getAccessToken() || 'dummy-token',
-  cache: {
-    clear: 'auto',
-    type: 'memory'
+// Lazy initialization of Storyblok client
+let storyblokClientInstance: StoryblokClient | null = null
+
+function getStoryblokClient(): StoryblokClient {
+  if (!storyblokClientInstance) {
+    const accessToken = getAccessToken()
+    
+    storyblokClientInstance = new StoryblokClient({
+      accessToken,
+      cache: {
+        clear: 'auto',
+        type: 'memory'
+      }
+    })
   }
-})
+  return storyblokClientInstance
+}
+
+// Export the lazy client getter
+export const storyblokClient = {
+  get: async (path: string, options?: any) => {
+    const client = getStoryblokClient()
+    return client.get(path, options)
+  }
+}
 
 // Helper function to get stories
 export async function getStories(storyType: string = 'article') {
   try {
-    const accessToken = getAccessToken()
-    if (!accessToken) {
-      console.warn('Storyblok access token not configured. Returning empty array.')
-      return []
-    }
-    
-    console.log('Fetching stories from Storyblok with type:', storyType)
-    
-    const { data } = await storyblokClient.get('cdn/stories', {
+    const queryParams: any = {
       per_page: 100,
       sort_by: 'created_at:desc'
-    })
+    }
     
-    console.log('Storyblok response:', data)
-    console.log('Number of stories found:', data.stories?.length || 0)
+    // Add content type filter if specified
+    if (storyType && storyType !== 'all') {
+      queryParams.content_type = storyType
+    }
     
+    const { data } = await storyblokClient.get('cdn/stories', queryParams)
+        
     return data.stories || []
   } catch (error) {
-    console.error('Failed to fetch stories from Storyblok:', error)
-    console.error('Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      status: (error as any)?.status,
-      response: (error as any)?.response?.data
-    })
     return []
   }
 }
@@ -68,51 +55,39 @@ export async function getStories(storyType: string = 'article') {
 // Helper function to get a single story by slug
 export async function getStoryBySlug(slug: string, storyType: string = 'article') {
   try {
-    const accessToken = getAccessToken()
-    if (!accessToken) {
-      console.warn('Storyblok access token not configured. Cannot fetch story.')
-      return null
+    
+    // Try different slug formats based on story type
+    let storyData = null
+    const slugVariations = [
+      slug, // Direct slug
+      `${storyType}/${slug}`, // With story type prefix
+      `${storyType}s/${slug}`, // With pluralized story type prefix
+    ]
+    
+    // Add specific variations for articles
+    if (storyType === 'article') {
+      slugVariations.push(`artiklar/${slug}`)
     }
     
-    console.log('Fetching story from Storyblok with slug:', slug)
+    // Add specific variations for references
+    if (storyType === 'reference') {
+      slugVariations.push(`references/${slug}`)
+    }
     
-    // Try different slug formats
-    let storyData = null
-    
-    // First try with the slug as-is
-    try {
-      const { data } = await storyblokClient.get(`cdn/stories/${slug}`)
-      storyData = data.story
-    } catch (error) {
-      console.log('Failed with slug as-is, trying with artiklar/ prefix')
-      
-      // Try with artiklar/ prefix
+    // Try each slug variation
+    for (const slugVariation of slugVariations) {
       try {
-        const { data } = await storyblokClient.get(`cdn/stories/artiklar/${slug}`)
+        const { data } = await storyblokClient.get(`cdn/stories/${slugVariation}`)
         storyData = data.story
-      } catch (error2) {
-        console.log('Failed with artiklar/ prefix, trying full path')
-        
-        // Try with full path
-        try {
-          const { data } = await storyblokClient.get(`cdn/stories/artiklar/${slug}`)
-          storyData = data.story
-        } catch (error3) {
-          throw error3 // Re-throw the last error
-        }
+        break // Success, exit the loop
+      } catch (error) {
+        // Continue to next variation
+        continue
       }
     }
     
-    console.log('Storyblok story response:', storyData)
-    
     return storyData || null
   } catch (error) {
-    console.error('Failed to fetch story from Storyblok:', error)
-    console.error('Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      status: (error as any)?.status,
-      response: (error as any)?.response?.data
-    })
     return null
   }
 }
@@ -120,28 +95,39 @@ export async function getStoryBySlug(slug: string, storyType: string = 'article'
 // Helper function to get all story slugs
 export async function getStorySlugs(storyType: string = 'article') {
   try {
-    const accessToken = getAccessToken()
-    if (!accessToken) {
-      console.warn('Storyblok access token not configured. Cannot fetch story slugs.')
-      return []
+    
+    // Build query parameters based on story type
+    const queryParams: any = {
+      per_page: 100
     }
     
-    console.log('Fetching story slugs from Storyblok with type:', storyType)
+    // Add content type filter if specified
+    if (storyType && storyType !== 'all') {
+      queryParams.content_type = storyType
+    }
     
-    const { data } = await storyblokClient.get('cdn/stories', {
-      per_page: 100
-    })
+    const { data } = await storyblokClient.get('cdn/stories', queryParams)
     
-    console.log('Storyblok slugs response:', data)
+    // Extract slugs and clean them based on story type
+    const slugs = data.stories?.map((story: any) => {
+      let cleanSlug = story.slug
+      
+      // Remove story type prefix if it exists
+      if (storyType === 'article' && cleanSlug.startsWith('artiklar/')) {
+        cleanSlug = cleanSlug.replace('artiklar/', '')
+      } else if (storyType === 'reference' && cleanSlug.startsWith('references/')) {
+        cleanSlug = cleanSlug.replace('references/', '')
+      } else if (cleanSlug.startsWith(`${storyType}/`)) {
+        cleanSlug = cleanSlug.replace(`${storyType}/`, '')
+      } else if (cleanSlug.startsWith(`${storyType}s/`)) {
+        cleanSlug = cleanSlug.replace(`${storyType}s/`, '')
+      }
+      
+      return cleanSlug
+    }) || []
     
-    return data.stories?.map((story: any) => story.slug) || []
+    return slugs
   } catch (error) {
-    console.error('Failed to fetch story slugs from Storyblok:', error)
-    console.error('Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      status: (error as any)?.status,
-      response: (error as any)?.response?.data
-    })
     return []
   }
 }

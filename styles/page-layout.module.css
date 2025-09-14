@@ -1,0 +1,51 @@
+/* Shared Page Layout Styles */
+.sectionTitle {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  margin: 64px 0 48px 0;
+  color: #000;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #000;
+  border-radius: 2px;
+}
+
+.pageContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 32px;
+    margin: 48px 0 32px 0;
+  }
+  
+  .pageContainer {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 28px;
+    margin: 32px 0 24px 0;
+  }
+  
+  .pageContainer {
+    padding: 0 16px;
+  }
+}
