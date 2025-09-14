@@ -39,9 +39,11 @@ cp env.example .env.local
 ```
 BLOB_READ_WRITE_TOKEN=your_vercel_blob_token_here
 RESEND_API_KEY=your_resend_api_key_here
-ADMIN_EMAIL=admin@koksoffert.com
-STORYBLOK_ACCESS_TOKEN=your_storyblok_access_token_here
+ADMIN_EMAIL=johan.liedgren@tom.se
+STORYBLOK_ACCESS_TOKEN=9DGra75hYTHrLddwyhVI5wtt
 ```
+
+**Note**: For local development, the upload API will work without `BLOB_READ_WRITE_TOKEN` by simulating a successful upload. For production deployment, you must configure the actual Vercel Blob token.
 
 4. Set up Storyblok CMS:
 

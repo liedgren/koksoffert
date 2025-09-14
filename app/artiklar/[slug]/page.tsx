@@ -116,9 +116,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound();
   }
 
-  // Debug image data
-  console.log("Article image data:", article.content.image);
-
   const baseUrl = "https://koksoffert.com";
   const articleUrl = `${baseUrl}/artiklar/${params.slug}`;
 
@@ -231,7 +228,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 export async function generateStaticParams() {
   try {
     const slugs = await getStorySlugs("article");
-    console.log("Generating static params for slugs:", slugs);
 
     // Extract the actual slug from the full_slug if needed
     return slugs.map((slug: string) => {

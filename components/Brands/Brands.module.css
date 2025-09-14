@@ -34,9 +34,9 @@
 }
 
 .brandLogo {
-  width: auto;
-  object-fit: contain;
   width: 70px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Responsive Design */

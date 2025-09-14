@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
         
         await resend.emails.send({
           from: 'noreply@resend.dev', // Use Resend's test domain
-          to: process.env.ADMIN_EMAIL || 'admin@koksoffert.com',
+          to: 'johan.liedgren@tom.se',
           subject: 'New Kitchen Offer Request',
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -104,23 +104,11 @@ export async function POST(request: NextRequest) {
             </div>
           `
         })
-        
-        console.log('Email sent successfully via Resend')
       } catch (emailError) {
         console.error('Failed to send email:', emailError)
         // Don't fail the request if email fails
       }
-    } else {
-      console.log('RESEND_API_KEY not configured, skipping email notification')
     }
-
-    console.log('New offer request:', {
-      name: sanitizedData.name,
-      email: sanitizedData.email,
-      phone: sanitizedData.phone,
-      message: sanitizedData.message,
-      blobUrl: sanitizedData.blobUrl,
-    })
 
     return NextResponse.json({ ok: true })
   } catch (error) {

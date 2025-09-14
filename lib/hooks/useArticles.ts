@@ -3,9 +3,7 @@ import { getStories } from "@/lib/storyblok";
 
 export async function useArticles(): Promise<ArticleListItem[]> {
   try {
-    console.log("Fetching articles from Storyblok...");
     const stories = await getStories("article");
-    console.log("Raw stories from Storyblok:", stories);
 
     // Transform Storyblok stories to our ArticleListItem format
     const articles = stories.map((story: any) => ({
@@ -19,7 +17,6 @@ export async function useArticles(): Promise<ArticleListItem[]> {
       image: story.content?.image?.filename || story.content?.image,
     }));
     
-    console.log("Transformed articles:", articles);
     return articles;
   } catch (error) {
     console.error("Failed to fetch articles:", error);

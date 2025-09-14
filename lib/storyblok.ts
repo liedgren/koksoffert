@@ -55,8 +55,6 @@ export async function getStories(storyType: string = 'article') {
 // Helper function to get a single story by slug
 export async function getStoryBySlug(slug: string, storyType: string = 'article') {
   try {
-    console.log(`Fetching story with slug: ${slug}, type: ${storyType}`)
-    
     // Determine the correct slug format based on story type
     let fullSlug = slug
     
@@ -66,12 +64,9 @@ export async function getStoryBySlug(slug: string, storyType: string = 'article'
       fullSlug = `references/${slug}`
     }
     
-    console.log(`Using full slug: ${fullSlug}`)
-    
     const { data } = await storyblokClient.get(`cdn/stories/${fullSlug}`)
     
     if (data.story) {
-      console.log(`Successfully fetched story: ${data.story.name}`)
       return data.story
     }
     

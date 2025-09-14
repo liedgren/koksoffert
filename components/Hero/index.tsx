@@ -94,7 +94,6 @@ export default function Hero({
         if (uploadResponse.ok) {
           const uploadResult = await uploadResponse.json();
           blobUrl = uploadResult.blobUrl;
-          console.log("File uploaded successfully:", blobUrl);
         } else {
           const uploadError = await uploadResponse.json();
           console.error("Upload failed:", uploadError);

@@ -12,9 +12,7 @@ export interface ReferenceItem {
 
 export async function useReferences(): Promise<ReferenceItem[]> {
   try {
-    console.log("Fetching references from Storyblok...");
     const stories = await getStories("reference");
-    console.log("Raw reference stories from Storyblok:", stories);
 
     // Transform Storyblok stories to our ReferenceItem format
     const references = stories
@@ -28,7 +26,6 @@ export async function useReferences(): Promise<ReferenceItem[]> {
         alt: story.content?.image?.alt || story.content?.title || story.name,
       }));
     
-    console.log("Transformed references:", references);
     return references;
   } catch (error) {
     console.error("Failed to fetch references:", error);
