@@ -1,10 +1,16 @@
 /* Shared Page Layout Styles */
+.mainContainer {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 .sectionTitle {
   font-family: var(--font-barlow), sans-serif;
   font-weight: 700;
   font-size: 40px;
   text-align: center;
-  margin: 64px 0 48px 0;
+  margin: 60px 0 40px 0;
   color: #000;
   position: relative;
 }
@@ -12,40 +18,48 @@
 .sectionTitle::after {
   content: '';
   position: absolute;
-  bottom: -16px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
   background: #000;
-  border-radius: 2px;
+  border-radius: 0px;
 }
 
 .pageContainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 30px;
 }
 
+/* Section-specific styling */
 /* Responsive Design */
 @media (max-width: 768px) {
   .sectionTitle {
-    font-size: 32px;
-    margin: 48px 0 32px 0;
+    font-size: 30px;
+    margin: 40px 0 30px 0;
   }
   
   .pageContainer {
-    padding: 0 24px;
+    padding: 0 20px;
   }
 }
 
 @media (max-width: 480px) {
   .sectionTitle {
-    font-size: 28px;
-    margin: 32px 0 24px 0;
+    font-size: 30px;
+    margin: 30px 0 20px 0;
   }
   
   .pageContainer {
     padding: 0 16px;
+  }
+  
+  .brandsSection,
+  .processSection,
+  .showcaseSection,
+  .partnershipSection {
+    padding: 30px 0;
   }
 }

@@ -4,7 +4,6 @@ import Brands from "@/components/Brands";
 import ProcessSteps from "@/components/ProcessSteps";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import PartnershipInfo from "@/components/PartnershipInfo";
-import Container from "@/components/Container";
 import styles from "@/styles/page-layout.module.css";
 
 export const metadata: Metadata = {
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   return (
-    <main>
+    <main className={styles.section}>
       <Hero
         title="Ge oss 1 minut - få 10 000-tals kronor tillbaka "
         subtitle="Ladda upp din befintliga köksoffert och svara på några snabba frågor. Sedan har du ett nytt fantastiskt pris inom 7 dagar.
@@ -22,15 +21,23 @@ export default async function HomePage() {
 ."
       />
 
-      <Brands />
+      <section className={styles.section}>
+        <Brands />
+      </section>
 
-      <h2 className={styles.sectionTitle}>Så fungerar det</h2>
-      <ProcessSteps />
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Så fungerar det</h2>
+        <ProcessSteps />
+      </section>
 
-      <h2 className={styles.sectionTitle}>Genomförda renoveringar</h2>
-      <ProjectShowcase />
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Genomförda renoveringar</h2>
+        <ProjectShowcase />
+      </section>
 
-      <PartnershipInfo />
+      <section className={styles.section}>
+        <PartnershipInfo />
+      </section>
     </main>
   );
 }

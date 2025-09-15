@@ -8,7 +8,7 @@
   font-weight: 600;
   font-size: 40px;
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   color: #2c3e50;
 }
 
@@ -25,8 +25,8 @@
 .articlesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 32px;
-  margin-top: 48px;
+  gap: 30px;
+  margin-top: 50px;
 }
 
 .articleCard {
@@ -110,7 +110,7 @@
 
 .articleContent {
   background: white;
-  padding: 24px;
+  padding: 20px;
   border-radius: 0 0 20px 20px;
   position: relative;
   margin-top: -20px;
@@ -181,7 +181,7 @@
 
 .noArticles {
   text-align: center;
-  padding: 48px 16px;
+  padding: 50px 20px;
   color: #666;
 }
 
@@ -194,7 +194,7 @@
 @media (max-width: 768px) {
   .articlesGrid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
   .articleImage {

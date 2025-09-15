@@ -1,17 +1,14 @@
 /* How It Works Section */
-.howItWorks {
-  padding: 20px 0 40px 0;
-}
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 30px;
 }
 
 
 .steps {
-  gap: 32px;
+  gap: 30px;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -20,14 +17,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 24px;
-  border-radius: 12px;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .stepNumber {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   background: #000;
   color: white;
   border-radius: 50%;
@@ -52,7 +49,7 @@
 }
 
 .stepDescription {
-  font-size: 16px;
+  font-size: 12px;
   color: #6b7280;
   line-height: 1.6;
   margin: 0;
@@ -61,17 +58,17 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .howItWorks {
-    padding: 48px 0;
+    padding: 50px 0;
   }
   
   .container {
-    padding: 0 24px;
+    padding: 0 20px;
   }
   
   
   .steps {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
   
   .step {
@@ -95,7 +92,7 @@
 
 @media (max-width: 480px) {
   .howItWorks {
-    padding: 32px 0;
+    padding: 30px 0;
   }
   
   .container {
@@ -109,8 +106,8 @@
   }
   
   .stepNumber {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     font-size: 16px;
   }
 }

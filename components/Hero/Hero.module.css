@@ -1,7 +1,7 @@
 /* Hero Component Styles */
 .heroSection {
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh + 50px);
   background: rgba(0,0,0,0.3) url('/images/backgrounds/hero.jpg');
   background-blend-mode: darken;
   background-size: cover;
@@ -14,6 +14,11 @@
   border-radius: 0 0 50px 50px;
   padding: 20vh 0 80px 0;
   transition: min-height 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .heroSection.expanded {
@@ -22,24 +27,23 @@
 
 .heroContent {
   max-width: 100%;
-  padding: 0 32px;
+  padding: 0 30px;
   width: 100%;
   max-width: 800px;
-  margin-top: 100px;
 }
 
 .title {
   color: #fff;
   font-family: var(--font-barlow), sans-serif;
   font-weight: 600;
-  font-size: 64px;
-  margin-bottom: 24px;
+  font-size: 60px;
+  margin-bottom: 20px;
   line-height: 1;
 }
 
 .subtitle {
-  font-size: 19px;
-  margin-bottom: 48px;
+  font-size: 20px;
+  margin-bottom: 40px;
   line-height: 1.7;
   color: #fff;
 }
@@ -77,14 +81,14 @@
 .contactForm {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 32px;
+  gap: 20px;
+  padding: 30px;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   animation: formElementSlideIn 0.3s ease-out;
   animation-fill-mode: both;
 }
@@ -108,22 +112,16 @@
 .label {
   font-weight: 500;
   color: #374151;
-  font-size: 14px;
+  font-size: 10px;
 }
 
 .input {
   padding: 14px 16px;
   border: 2px solid #e5e7eb;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 20px;
   transition: all 0.2s ease;
   background: white;
-}
-
-.input:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .input::placeholder {
@@ -147,18 +145,13 @@
 .fileUploadLabel {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   padding: 14px 16px;
   border: 2px dashed #d1d5db;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
   background: #f9fafb;
-}
-
-.fileUploadLabel:hover {
-  border-color: #2563eb;
-  background: #eff6ff;
 }
 
 .fileUploadIcon {
@@ -168,7 +161,7 @@
 
 .fileUploadText {
   color: #6b7280;
-  font-size: 14px;
+  font-size: 10px;
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -176,14 +169,14 @@
 }
 
 .submitButton {
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 12px;
+  background: #000;
+  border:none;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
   font-family: var(--font-barlow), sans-serif;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 8px;
@@ -192,27 +185,13 @@
   animation-fill-mode: both;
 }
 
-.submitButton:hover:not(:disabled) {
-  background: #1d4ed8;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
-}
-
-.submitButton:disabled {
-  background: #9ca3af;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .heroSection {
     border-radius: 0 0 20px 20px;
     width: 100%;
     min-height: 100vh;
-    padding: 15vh 0 48px 0;
+    padding: 15vh 0 50px 0;
   }
 
   .heroSection.expanded {
@@ -230,22 +209,22 @@
   }
 
   .subtitle {
-    font-size: 19px;
+    font-size: 20px;
   }
 
   .contactForm {
-    padding: 24px;
+    padding: 20px;
     gap: 20px;
   }
 
   .input {
     padding: 12px 14px;
-    font-size: 14px;
+    font-size: 10px;
   }
 
   .submitButton {
-    padding: 14px 24px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 10px;
   }
 }
 
@@ -254,7 +233,7 @@
     border-radius: 0 0 10px 10px;
     width: 100%;
     min-height: 100vh;
-    padding: 12vh 0 32px 0;
+    padding: 12vh 0 30px 0;
   }
 
   .heroSection.expanded {
@@ -268,26 +247,26 @@
   }
 
   .title {
-    font-size: 48px;
+    font-size: 50px;
   }
 
   .subtitle {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .contactForm {
     padding: 20px;
-    gap: 16px;
+    gap: 20px;
   }
 
   .input {
     padding: 12px 14px;
-    font-size: 14px;
+    font-size: 10px;
   }
 
   .submitButton {
     padding: 12px 20px;
-    font-size: 14px;
+    font-size: 10px;
   }
 }
 
@@ -298,7 +277,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 48px 32px;
+  padding: 50px 30px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -309,12 +288,12 @@
 
 .successIcon {
   color: #10b981;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   animation: successIconBounce 0.8s ease-out;
 }
 
 .successTitle {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
   color: #1f2937;
   margin: 0 0 16px 0;
@@ -322,9 +301,9 @@
 }
 
 .successText {
-  font-size: 18px;
+  font-size: 20px;
   color: #4b5563;
-  margin: 0 0 32px 0;
+  margin: 0 0 30px 0;
   line-height: 1.6;
   max-width: 500px;
 }
@@ -356,23 +335,23 @@
 /* Responsive Success Message */
 @media (max-width: 768px) {
   .successMessage {
-    padding: 32px 24px;
+    padding: 30px 20px;
     border-radius: 15px;
   }
 
   .successTitle {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .successText {
-    font-size: 16px;
+    font-size: 20px;
   }
 
 }
 
 @media (max-width: 480px) {
   .successMessage {
-    padding: 24px 16px;
+    padding: 20px 20px;
     border-radius: 12px;
   }
 
@@ -381,7 +360,7 @@
   }
 
   .successText {
-    font-size: 14px;
+    font-size: 10px;
   }
 
 }

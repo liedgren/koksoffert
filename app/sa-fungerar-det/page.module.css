@@ -1,21 +1,24 @@
 /* Sa Fungerar Det Page Styles */
 .benefitsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 48px;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .benefitItem {
   text-align: center;
-  padding: 24px;
+  padding: 20px;
+  max-width: 400px;
 }
 
 .benefitTitle {
   font-family: var(--font-barlow), sans-serif;
   font-weight: 600;
-  font-size: 24px;
-  margin-bottom: 16px;
+  font-size: 20px;
+  margin-bottom: 20px;
   color: #1f2937;
 }
 
@@ -23,18 +26,18 @@
   color: #4b5563;
   margin: 0;
   line-height: 1.7;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .benefitsGrid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 30px;
   }
   
   .benefitItem {
-    padding: 16px;
+    padding: 20px;
   }
   
   .benefitTitle {
@@ -42,20 +45,20 @@
   }
   
   .benefitDescription {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .benefitsGrid {
-    gap: 24px;
+    gap: 20px;
   }
   
   .benefitTitle {
-    font-size: 18px;
+    font-size: 20px;
   }
   
   .benefitDescription {
-    font-size: 15px;
+    font-size: 20px;
   }
 }

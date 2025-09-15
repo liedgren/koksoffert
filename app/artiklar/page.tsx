@@ -3,7 +3,7 @@ import PageHero from "@/components/PageHero";
 import ContentSection from "@/components/ContentSection";
 import ArticlesList from "@/components/ArticlesList";
 import { useArticles } from "@/lib/hooks/useArticles";
-import styles from "@/styles/page-layout.module.css";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Kitchen Artiklar - Professional Kitchen Resources | Koksoffert",
@@ -66,21 +66,22 @@ export default async function ArticlesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <main>
+      <main className={styles.mainContainer}>
         <PageHero
           backgroundImage="/images/backgrounds/hero4.jpg"
           height="minimal"
         />
 
-        <h2 className={styles.sectionTitle}>Köksnyheter</h2>
+        <h2 className={styles.pageTitle}>Köksnyheter</h2>
 
-        <ContentSection>
-          <ArticlesList
-            articles={articles}
-            showTitle={false}
-            showIntro={false}
-          />
-        </ContentSection>
+        <div className={styles.contentWrapper}>
+            <ArticlesList
+              articles={articles}
+              showTitle={false}
+              showIntro={false}
+              customStyles={styles}
+            />
+        </div>
       </main>
     </>
   );

@@ -21,7 +21,7 @@
 .title {
   font-family: var(--font-barlow), sans-serif;
   color: #fff;
-  font-size: 48px;
+  font-size: 50px;
   margin-bottom: 16px;
   line-height: 1.2;
 }
@@ -34,7 +34,7 @@
 
 /* Titles below hero */
 .titleBelow {
-  padding: 48px 32px 32px;
+  padding: 50px 30px 30px;
   background: white;
   max-width: 800px;
   margin: 0 auto;
@@ -44,7 +44,7 @@
 .titleBelowText {
   font-family: var(--font-barlow), sans-serif;
   color: #1f2937;
-  font-size: 48px;
+  font-size: 50px;
   margin-bottom: 16px;
   line-height: 1.2;
 }
@@ -131,7 +131,7 @@
   }
 
   .title {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .subtitle {
@@ -139,11 +139,11 @@
   }
 
   .titleBelow {
-    padding: 32px 16px 24px;
+    padding: 30px 20px 20px;
   }
 
   .titleBelowText {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .subtitleBelowText {

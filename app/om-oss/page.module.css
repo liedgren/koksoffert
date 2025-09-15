@@ -3,7 +3,7 @@
   font-size: 18px;
   line-height: 1.7;
   color: #000;
-  margin-bottom: 48px;
+  margin-bottom: 50px;
   text-align: center;
   max-width: 800px;
   margin-left: auto;
@@ -11,9 +11,9 @@
 }
 
 .valuesContainer {
-  gap: 32px;
+  gap: 30px;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 64px auto;
 }
 
 .valueItem {
@@ -21,13 +21,13 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  padding: 24px;
+  padding: 20px;
   border-radius: 12px;
 }
 
 .valueIcon {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   background: #000;
   color: white;
   border-radius: 50%;
@@ -63,7 +63,7 @@
 @media (max-width: 768px) {
   .contentText {
     font-size: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
   }
   
   .valueItem {
@@ -88,7 +88,7 @@
 @media (max-width: 480px) {
   .contentText {
     font-size: 15px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   
   .valueItem {
@@ -97,8 +97,8 @@
   }
   
   .valueIcon {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     font-size: 16px;
   }
   

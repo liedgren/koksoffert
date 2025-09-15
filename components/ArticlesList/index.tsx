@@ -8,60 +8,64 @@ export default function ArticlesList({
   showIntro = true,
   maxArticles,
   className = "",
+  customStyles,
 }: ArticlesListProps) {
   // Limit articles if maxArticles is specified
   const displayArticles = maxArticles
     ? articles.slice(0, maxArticles)
     : articles;
 
+  // Use custom styles if provided, otherwise fall back to default styles
+  const activeStyles = customStyles || styles;
+
   return (
-    <div className={`${styles.articlesSection} ${className}`}>
+    <div className={`${activeStyles.articlesSection} ${className}`}>
       {showTitle && (
-        <h1 className={styles.articlesTitle}>Kitchen Artiklar & Resources</h1>
+        <h1 className={activeStyles.articlesTitle}>Kitchen Artiklar & Resources</h1>
       )}
 
       {showIntro && (
-        <p className={styles.articlesIntro}>
+        <p className={activeStyles.articlesIntro}>
           Expert insights and practical advice for professional kitchen design,
           equipment selection, and industry best practices.
         </p>
       )}
 
       {displayArticles.length === 0 ? (
-        <div className={styles.noArticles}>
+        <div className={activeStyles.noArticles}>
           <p>No artiklar available at the moment. Please check back later.</p>
         </div>
       ) : (
-        <div className={styles.articlesGrid}>
+        <div className={activeStyles.articlesGrid}>
           {displayArticles.map((article) => (
-            <Link href={`/artiklar/${article.slug}`}>
-              <article key={article.id} className={styles.articleCard}>
-                <div className={styles.articleImage}>
+            <Link href={`/artiklar/${article.slug}`} key={article.id}>
+              <article className={activeStyles.articleCard}>
+                <div className={activeStyles.articleImage}>
                   <img
                     src={
                       article.image ||
                       "/images/articles/article-placeholder.jpg"
                     }
                     alt={article.title}
-                    className={styles.image}
+                    className={activeStyles.image}
                   />
                 </div>
-                <div className={styles.articleContent}>
-                  <div className={styles.articleMeta}>
-                    <span className={styles.articleCategory}>
+                <div className={activeStyles.articleContent}>
+                  <div className={activeStyles.articleMeta}>
+                    <span className={activeStyles.articleCategory}>
                       {article.category}
                     </span>
-                    <span className={styles.articleDate}>
+                    <span className={activeStyles.articleDate}>
                       {new Date(article.publishedAt).toLocaleDateString()}
                     </span>
                   </div>
-                  <h2 className={styles.articleTitle}>{article.title}</h2>
-                  <p className={styles.articleExcerpt}>{article.excerpt}</p>
-                  <div className={styles.articleFooter}>
-                    <span className={styles.articleReadTime}>
+                  <h2 className={activeStyles.articleTitle}>{article.title}</h2>
+                  <p className={activeStyles.articleExcerpt}>{article.excerpt}</p>
+                  <div className={activeStyles.articleFooter}>
+                    <span className={activeStyles.articleReadTime}>
                       {article.readTime}
                     </span>
-                    <div className={styles.articleLink}>Läs mer →</div>
+                    <div className={activeStyles.articleLink}>Läs mer →</div>
                   </div>
                 </div>
               </article>

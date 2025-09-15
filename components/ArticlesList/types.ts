@@ -6,4 +6,5 @@ export interface ArticlesListProps {
   showIntro?: boolean;
   maxArticles?: number;
   className?: string;
+  customStyles?: any;
 }

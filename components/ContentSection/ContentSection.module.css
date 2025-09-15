@@ -1,6 +1,6 @@
 /* ContentSection Component Styles */
 .contentSection {
-  padding: 64px 0;
+  padding: 60px 0;
 }
 
 .white {
@@ -27,7 +27,7 @@
 
 /* Section Styles */
 .section {
-  margin-bottom: 64px;
+  margin-bottom: 60px;
 }
 
 .sectionTitle {
@@ -35,7 +35,7 @@
   font-weight: 600;
   font-size: 40px;
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   color: #2c3e50;
 }
 
@@ -43,13 +43,13 @@
 .processSteps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 48px;
-  margin-top: 48px;
+  gap: 40px;
+  margin-top: 50px;
 }
 
 .processStep {
   background: #f8f9fa;
-  padding: 48px 32px;
+  padding: 50px 30px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   text-align: center;
@@ -66,8 +66,8 @@
 .stepNumber {
   background: #2563eb;
   color: white;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -75,13 +75,13 @@
   font-family: var(--font-barlow), sans-serif;
   font-weight: 600;
   font-size: 20px;
-  margin: 0 auto 24px;
+  margin: 0 auto 20px;
 }
 
 .stepTitle {
   font-family: var(--font-barlow), sans-serif;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 16px;
   color: #2c3e50;
 }
@@ -96,13 +96,13 @@
 .benefitsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 32px;
+  gap: 30px;
   margin-top: 3rem;
 }
 
 .benefitItem {
   background: #f8f9fa;
-  padding: 32px 24px;
+  padding: 30px 20px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   text-align: center;
@@ -133,7 +133,7 @@
 .ctaSection {
   text-align: center;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 64px 32px;
+  padding: 60px 30px;
   border-radius: 16px;
   border: 1px solid #e5e7eb;
   margin-top: 64px;
@@ -143,12 +143,12 @@
   font-family: var(--font-barlow), sans-serif;
   font-weight: 600;
   font-size: 40px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   color: #2c3e50;
 }
 
 .ctaDescription {
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   color: #666;
   font-size: 19px;
   max-width: 600px;
@@ -165,8 +165,8 @@
 
 /* About Section Styles */
 .aboutSection {
-  margin-bottom: 64px;
-  padding-bottom: 48px;
+  margin-bottom: 60px;
+  padding-bottom: 50px;
   border-bottom: 1px solid #e5e7eb;
   max-width: 800px;
   margin-left: auto;
@@ -178,8 +178,8 @@
 }
 
 .aboutSection ul {
-  margin-left: 24px;
-  margin-bottom: 24px;
+  margin-left: 20px;
+  margin-bottom: 20px;
   max-width: 700px;
 }
 
@@ -192,33 +192,33 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .contentSection {
-    padding: 48px 0;
+    padding: 50px 0;
   }
 
   .sectionTitle {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .processSteps {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 30px;
   }
 
   .benefitsGrid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
   .processStep {
-    padding: 32px 24px;
+    padding: 30px 20px;
   }
 
   .ctaSection {
-    padding: 48px 24px;
+    padding: 40px 20px;
   }
 
   .ctaTitle {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .ctaButtons {
@@ -229,14 +229,14 @@
 
 @media (max-width: 480px) {
   .contentSection {
-    padding: 32px 0;
+    padding: 30px 0;
   }
 
   .processStep {
-    padding: 24px 16px;
+    padding: 20px 20px;
   }
 
   .ctaSection {
-    padding: 32px 16px;
+    padding: 30px 20px;
   }
 }
