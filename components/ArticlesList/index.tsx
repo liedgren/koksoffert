@@ -52,9 +52,6 @@ export default function ArticlesList({
                 </div>
                 <div className={activeStyles.articleContent}>
                   <div className={activeStyles.articleMeta}>
-                    <span className={activeStyles.articleCategory}>
-                      {article.category}
-                    </span>
                     <span className={activeStyles.articleDate}>
                       {new Date(article.publishedAt).toLocaleDateString()}
                     </span>

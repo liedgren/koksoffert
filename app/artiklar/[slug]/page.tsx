@@ -185,9 +185,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         {/* Article Header Below Hero */}
         <div className={styles.articleHeader}>
           <div className={styles.articleMeta}>
-            <span className={styles.articleCategory} itemProp="articleSection">
-              {article.content.category}
-            </span>
             <time
               className={styles.articleDate}
               dateTime={article.published_at}

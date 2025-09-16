@@ -79,7 +79,6 @@ export default async function ArticlesPage() {
               articles={articles}
               showTitle={false}
               showIntro={false}
-              customStyles={styles}
             />
         </div>
       </main>
