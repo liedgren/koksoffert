@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import GTM from '@/components/Analytics/GTM';
+import GTM from '@/components/analytics/GTM';
 import { Barlow, Roboto } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
